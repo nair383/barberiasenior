@@ -1,0 +1,246 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Contacto & Ubicación - ESQUINA Studio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#07090f] text-gray-200 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#d4af37] selection:text-black overflow-x-hidden relative">
+
+    <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-[#d4af37]/15 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#2a261f] to-[#d4af37]/30 border border-[#d4af37]/40 flex items-center justify-center text-white font-bold text-lg">
+                    E
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-widest text-white font-['Playfair_Display']">ESQUINA</span>
+                    <span class="block text-[9px] uppercase tracking-[0.25em] text-[#d4af37] font-medium">Studio & Grooming</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Inicio</a>
+                <a href="servicios.html" class="text-gray-400 hover:text-white transition">Servicios & Cotizador</a>
+                <a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a>
+                <a href="contacto.html" class="text-[#d4af37] font-semibold transition border-b border-[#d4af37] pb-0.5">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/25 hover:bg-[#d4af37]/20 text-gray-200 transition">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-[#d4af37]"></i>
+                    <span id="cart-counter" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#d4af37] text-black font-bold text-xs flex items-center justify-center shadow-md">0</span>
+                </button>
+                <button id="menu-btn" class="md:hidden p-2.5 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37]">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="fixed inset-x-0 top-20 bg-[#07090f]/98 backdrop-blur-xl border-b border-[#d4af37]/20 py-6 px-6 flex flex-col gap-4 shadow-2xl hidden md:hidden z-50">
+            <a href="index.html" class="text-gray-400 hover:text-white py-2 border-b border-[#d4af37]/10">Inicio</a>
+            <a href="servicios.html" class="text-gray-400 hover:text-white py-2 border-b border-[#d4af37]/10">Servicios & Cotizador</a>
+            <a href="nosotros.html" class="text-gray-400 hover:text-white py-2 border-b border-[#d4af37]/10">Nosotros</a>
+            <a href="contacto.html" class="text-[#d4af37] font-semibold py-2">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-4 max-w-7xl mx-auto z-10 relative">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-xs uppercase tracking-[0.2em] text-[#d4af37] font-semibold">Atención Personalizada</span>
+            <h1 class="text-4xl sm:text-6xl font-light font-['Playfair_Display']">Contacto & Ubicación</h1>
+            <p class="text-gray-400 font-light">Visítanos en nuestro estudio en Ñuñoa o comunícate de forma directa con nuestro equipo[cite: 1].</p>
+        </div>
+
+        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12 mb-24">
+            <!-- Info Widget -->
+            <div class="lg:col-span-5 space-y-8">
+                <div class="p-8 rounded-3xl bg-[#d4af37]/[0.02] border border-[#d4af37]/20 space-y-6 shadow-xl">
+                    <h3 class="text-2xl font-light font-['Playfair_Display'] text-white">Información del Estudio</h3>
+                    
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37] flex items-center justify-center shrink-0">
+                            <i data-lucide="map-pin" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Dirección</p>
+                            <p class="text-sm text-gray-400 font-light">Gral. Gorostiaga 881, 7790495 Ñuñoa, Región Metropolitana[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37] flex items-center justify-center shrink-0">
+                            <i data-lucide="phone" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Teléfono / WhatsApp</p>
+                            <p class="text-sm text-gray-400 font-light">+56 9 3863 7808[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37] flex items-center justify-center shrink-0">
+                            <i class="fa-solid fa-rainbow text-base"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Ambiente Inclusivo</p>
+                            <p class="text-sm text-gray-400 font-light">Amigable con LGBTQ+[cite: 1]</p>
+                        </div>
+                    </div>
+
+                    <div class="flex items-start gap-4">
+                        <div class="w-12 h-12 rounded-2xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37] flex items-center justify-center shrink-0">
+                            <i data-lucide="clock" class="w-5 h-5"></i>
+                        </div>
+                        <div>
+                            <p class="text-sm font-semibold text-white">Horarios</p>
+                            <p class="text-sm text-gray-400 font-light">Martes a Sábado: 10:00 - 20:00 hrs.</p>
+                            <p id="live-status" class="text-xs text-[#d4af37] font-medium mt-1">Verificando estado...</p>
+                        </div>
+                    </div>
+                </div>
+
+                <a href="https://wa.me/56938637808" target="_blank" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black font-semibold transition flex items-center justify-center gap-3 shadow-lg shadow-[#d4af37]/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Escribir por WhatsApp Directo [+56 9 3863 7808][cite: 1]
+                </a>
+            </div>
+
+            <!-- Contact Form -->
+            <div class="lg:col-span-7 space-y-8">
+                <div class="p-8 rounded-3xl bg-[#d4af37]/[0.02] border border-[#d4af37]/20 shadow-xl">
+                    <h3 class="text-2xl font-light font-['Playfair_Display'] text-white mb-6">Envíanos un Mensaje</h3>
+                    <form id="contact-form" class="space-y-6">
+                        <div class="grid grid-cols-1 sm:grid-cols-2 gap-6">
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Nombre Completo</label>
+                                <input type="text" id="contact-name" required placeholder="Ej. Juan Pérez" class="w-full px-4 py-3 rounded-xl bg-[#d4af37]/5 border border-[#d4af37]/25 focus:border-[#d4af37] text-sm text-white outline-none transition font-light">
+                            </div>
+                            <div>
+                                <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Teléfono / WhatsApp</label>
+                                <input type="tel" id="contact-phone" required placeholder="+56 9 ..." class="w-full px-4 py-3 rounded-xl bg-[#d4af37]/5 border border-[#d4af37]/25 focus:border-[#d4af37] text-sm text-white outline-none transition font-light">
+                            </div>
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Correo Electrónico</label>
+                            <input type="email" id="contact-email" required placeholder="correo@ejemplo.com" class="w-full px-4 py-3 rounded-xl bg-[#d4af37]/5 border border-[#d4af37]/25 focus:border-[#d4af37] text-sm text-white outline-none transition font-light">
+                        </div>
+                        <div>
+                            <label class="block text-xs font-medium text-gray-400 uppercase tracking-wider mb-2">Mensaje o Consulta</label>
+                            <textarea id="contact-msg" rows="4" required placeholder="¿En qué podemos ayudarte?" class="w-full px-4 py-3 rounded-xl bg-[#d4af37]/5 border border-[#d4af37]/25 focus:border-[#d4af37] text-sm text-white outline-none transition resize-none font-light"></textarea>
+                        </div>
+                        <button type="submit" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black font-semibold transition flex items-center justify-center gap-2 shadow-lg shadow-[#d4af37]/20">
+                            <i data-lucide="send" class="w-5 h-5"></i> Enviar Mensaje
+                        </button>
+                        <p id="form-success" class="text-[#d4af37] text-sm text-center hidden font-medium">¡Mensaje enviado con éxito! Nos pondremos en contacto contigo pronto.</p>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+        <!-- FAQ Section -->
+        <div class="max-w-4xl mx-auto mb-20">
+            <div class="text-center mb-12 space-y-3">
+                <h2 class="text-3xl font-light font-['Playfair_Display']">Preguntas Frecuentes (FAQ)</h2>
+                <p class="text-gray-400 font-light">Respuestas a tus dudas habituales sobre visitas y servicios.</p>
+            </div>
+            <div class="space-y-4" id="faq-accordion">
+                <div class="p-6 rounded-2xl bg-[#d4af37]/[0.02] border border-[#d4af37]/20 cursor-pointer faq-item">
+                    <div class="flex items-center justify-between font-medium text-white">
+                        <span>¿Es necesario reservar con anticipación?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-[#d4af37] transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content hidden pt-4 text-gray-400 text-sm font-light leading-relaxed border-t border-[#d4af37]/15 mt-4">
+                        Recomendamos agendar tu cita a través de nuestra web o mediante WhatsApp (+56 9 3863 7808) para asegurar disponibilidad horaria[cite: 1].
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[#d4af37]/[0.02] border border-[#d4af37]/20 cursor-pointer faq-item">
+                    <div class="flex items-center justify-between font-medium text-white">
+                        <span>¿Dónde están ubicados exactamente?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-[#d4af37] transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content hidden pt-4 text-gray-400 text-sm font-light leading-relaxed border-t border-[#d4af37]/15 mt-4">
+                        Nos encontramos en **Gral. Gorostiaga 881, Ñuñoa**, Región Metropolitana[cite: 1], en un sector de fácil acceso.
+                    </div>
+                </div>
+                <div class="p-6 rounded-2xl bg-[#d4af37]/[0.02] border border-[#d4af37]/20 cursor-pointer faq-item">
+                    <div class="flex items-center justify-between font-medium text-white">
+                        <span>¿Qué métodos de pago aceptan?</span>
+                        <i data-lucide="chevron-down" class="w-5 h-5 text-[#d4af37] transition-transform duration-300"></i>
+                    </div>
+                    <div class="faq-content hidden pt-4 text-gray-400 text-sm font-light leading-relaxed border-t border-[#d4af37]/15 mt-4">
+                        Aceptamos efectivo, tarjetas de débito, crédito y transferencias bancarias directas en el estudio.
+                    </div>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-[#07090f] border-l border-[#d4af37]/30 h-full flex flex-col p-6 shadow-2xl transform translate-x-full transition-transform duration-300" id="cart-panel">
+            <div class="flex items-center justify-between pb-6 border-b border-[#d4af37]/20">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-[#d4af37]"></i>
+                    <h3 class="text-lg font-semibold text-white">Tu Cotización / Reserva</h3>
+                </div>
+                <button id="close-cart-btn" class="p-2 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-gray-300">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="flex-1 overflow-y-auto py-6 space-y-4">
+                <p class="text-gray-400 text-center py-12 text-sm font-light">Tu carrito está vacío.</p>
+            </div>
+            <div class="pt-6 border-t border-[#d4af37]/20 space-y-4">
+                <div class="flex items-center justify-between text-base font-medium">
+                    <span class="text-gray-400">Total Estimado:</span>
+                    <span id="cart-total" class="text-[#d4af37] text-xl font-semibold">$0 CLP</span>
+                </div>
+                <button id="checkout-whatsapp" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black font-semibold transition flex items-center justify-center gap-3 shadow-lg shadow-[#d4af37]/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Reservar / Enviar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#030407] border-t border-[#d4af37]/20 py-16 px-4 z-10 relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-[#d4af37] text-black font-bold flex items-center justify-center">E</div>
+                    <span class="text-lg font-bold tracking-wider font-['Playfair_Display']">ESQUINA</span>
+                </div>
+                <p class="text-gray-400 text-sm font-light">Studio & Grooming en Gral. Gorostiaga 881, Ñuñoa[cite: 1].</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Enlaces Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400 font-light">
+                    <li><a href="index.html" class="hover:text-[#d4af37] transition">Inicio</a></li>
+                    <li><a href="servicios.html" class="hover:text-[#d4af37] transition">Servicios & Cotizador</a></li>
+                    <li><a href="nosotros.html" class="hover:text-[#d4af37] transition">Nosotros</a></li>
+                    <li><a href="contacto.html" class="hover:text-[#d4af37] transition">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Ubicación</h4>
+                <p class="text-sm text-gray-400 font-light">Gral. Gorostiaga 881, Ñuñoa[cite: 1]</p>
+                <p class="text-sm text-[#d4af37] font-light mt-2">+56 9 3863 7808[cite: 1]</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Inclusión</h4>
+                <p class="text-sm text-gray-400 font-light flex items-center gap-2"><i class="fa-solid fa-rainbow"></i> LGBTQ+ Friendly[cite: 1]</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>

@@ -1,0 +1,248 @@
+<!DOCTYPE html>
+<html lang="es" class="dark scroll-smooth">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Servicios & Cotizador - ESQUINA Studio</title>
+    <script src="https://cdn.jsdelivr.net/npm/@tailwindcss/browser@4"></script>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <link href="https://fonts.googleapis.com/css2?family=Plus+Jakarta+Sans:wght@300;400;500;600;700&family=Playfair+Display:wght@500;600;700&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="style.css">
+</head>
+<body class="bg-[#07090f] text-gray-200 font-['Plus_Jakarta_Sans',sans-serif] selection:bg-[#d4af37] selection:text-black overflow-x-hidden relative">
+
+    <canvas id="particles-canvas" class="fixed inset-0 pointer-events-none z-0"></canvas>
+
+    <!-- Header / Navbar -->
+    <header class="fixed top-0 left-0 w-full z-50 glass-nav border-b border-[#d4af37]/15 transition-all">
+        <div class="max-w-7xl mx-auto px-4 sm:px-6 lg:px-8 h-20 flex items-center justify-between">
+            <a href="index.html" class="flex items-center gap-3 group">
+                <div class="w-10 h-10 rounded-xl bg-gradient-to-tr from-[#2a261f] to-[#d4af37]/30 border border-[#d4af37]/40 flex items-center justify-center text-white font-bold text-lg">
+                    E
+                </div>
+                <div>
+                    <span class="text-xl font-bold tracking-widest text-white font-['Playfair_Display']">ESQUINA</span>
+                    <span class="block text-[9px] uppercase tracking-[0.25em] text-[#d4af37] font-medium">Studio & Grooming</span>
+                </div>
+            </a>
+            <nav class="hidden md:flex items-center gap-8 text-sm font-medium">
+                <a href="index.html" class="text-gray-400 hover:text-white transition">Inicio</a>
+                <a href="servicios.html" class="text-[#d4af37] font-semibold transition border-b border-[#d4af37] pb-0.5">Servicios & Cotizador</a>
+                <a href="nosotros.html" class="text-gray-400 hover:text-white transition">Nosotros</a>
+                <a href="contacto.html" class="text-gray-400 hover:text-white transition">Contacto</a>
+            </nav>
+            <div class="flex items-center gap-3 sm:gap-4">
+                <button id="open-cart-btn" class="relative p-2.5 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/25 hover:bg-[#d4af37]/20 text-gray-200 transition">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-[#d4af37]"></i>
+                    <span id="cart-counter" class="absolute -top-1.5 -right-1.5 w-5 h-5 rounded-full bg-[#d4af37] text-black font-bold text-xs flex items-center justify-center shadow-md">0</span>
+                </button>
+                <button id="menu-btn" class="md:hidden p-2.5 rounded-xl bg-[#d4af37]/10 border border-[#d4af37]/25 text-[#d4af37]">
+                    <i data-lucide="menu" class="w-6 h-6"></i>
+                </button>
+            </div>
+        </div>
+        <div id="mobile-menu" class="fixed inset-x-0 top-20 bg-[#07090f]/98 backdrop-blur-xl border-b border-[#d4af37]/20 py-6 px-6 flex flex-col gap-4 shadow-2xl hidden md:hidden z-50">
+            <a href="index.html" class="text-gray-400 hover:text-white py-2 border-b border-[#d4af37]/10">Inicio</a>
+            <a href="servicios.html" class="text-[#d4af37] font-semibold py-2 border-b border-[#d4af37]/10">Servicios & Cotizador</a>
+            <a href="nosotros.html" class="text-gray-400 hover:text-white py-2 border-b border-[#d4af37]/10">Nosotros</a>
+            <a href="contacto.html" class="text-gray-400 hover:text-white py-2">Contacto</a>
+        </div>
+    </header>
+
+    <!-- Main Content -->
+    <main class="pt-32 pb-24 px-4 max-w-7xl mx-auto z-10 relative">
+        <div class="text-center max-w-3xl mx-auto mb-16 space-y-4">
+            <span class="text-xs uppercase tracking-[0.2em] text-[#d4af37] font-semibold">Selección Exclusiva</span>
+            <h1 class="text-4xl sm:text-6xl font-light font-['Playfair_Display']">Catálogo & Cotizador</h1>
+            <p class="text-gray-400 font-light">Elige tus servicios y arma tu cotización en tiempo real para agendar directamente por WhatsApp.</p>
+        </div>
+
+        <!-- Filter & Search Bar -->
+        <div class="flex flex-col md:flex-row items-center justify-between gap-4 mb-12 bg-[#d4af37]/[0.02] p-4 rounded-2xl border border-[#d4af37]/20">
+            <div class="flex items-center gap-2 overflow-x-auto w-full md:w-auto pb-2 md:pb-0" id="filter-buttons">
+                <button data-filter="all" class="filter-btn px-5 py-2.5 rounded-xl bg-[#d4af37] text-black font-semibold text-sm transition shadow-md">Todos</button>
+                <button data-filter="barberia" class="filter-btn px-5 py-2.5 rounded-xl bg-[#d4af37]/5 hover:bg-[#d4af37]/15 text-gray-300 font-medium text-sm transition border border-[#d4af37]/20">Barbería</button>
+                <button data-filter="estilismo" class="filter-btn px-5 py-2.5 rounded-xl bg-[#d4af37]/5 hover:bg-[#d4af37]/15 text-gray-300 font-medium text-sm transition border border-[#d4af37]/20">Estilismo & Color</button>
+                <button data-filter="tratamientos" class="filter-btn px-5 py-2.5 rounded-xl bg-[#d4af37]/5 hover:bg-[#d4af37]/15 text-gray-300 font-medium text-sm transition border border-[#d4af37]/20">Tratamientos</button>
+            </div>
+            <div class="relative w-full md:w-80">
+                <i data-lucide="search" class="absolute left-4 top-1/2 -translate-y-1/2 w-4 h-4 text-[#d4af37]"></i>
+                <input type="text" id="service-search" placeholder="Buscar servicio..." class="w-full pl-11 pr-4 py-2.5 rounded-xl bg-[#d4af37]/5 border border-[#d4af37]/25 focus:border-[#d4af37] text-sm text-white outline-none transition">
+            </div>
+        </div>
+
+        <!-- Services Grid -->
+        <div class="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-8" id="services-grid">
+            <!-- Item 1 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="barberia" data-name="Corte de Cabello Signature" data-price="18000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1622286342621-4bd786c2447c?auto=format&fit=crop&q=80&w=600" alt="Corte Signature" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Barbería</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Corte de Cabello Signature</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">Corte personalizado con asesoría de imagen, lavado revitalizante y peinado profesional.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$18.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 2 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="barberia" data-name="Perfilado y Cuidado de Barba" data-price="14000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1503951914875-452162b0f3f1?auto=format&fit=crop&q=80&w=600" alt="Perfilado de Barba" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Barbería</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Perfilado y Cuidado de Barba</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">Perfilado con toallas calientes, navaja tradicional y aceites esenciales hidratantes.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$14.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 3 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="estilismo" data-name="Combo Completo: Corte & Barba" data-price="28000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1599566150163-29194dcaad36?auto=format&fit=crop&q=80&w=600" alt="Combo Completo" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Estilismo</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Combo Completo: Corte & Barba</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">La experiencia definitiva ESQUINA. Incluye corte signature, barba y bebidas de cortesía.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$28.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 4 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="estilismo" data-name="Coloración & Matizado" data-price="25000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1560066984-138dadb4c035?auto=format&fit=crop&q=80&w=600" alt="Coloración" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Estilismo</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Coloración & Matizado</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">Camuflaje de canas, decoloración profesional o efectos de color de alta gama.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$25.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 5 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="tratamientos" data-name="Tratamiento Capilar Detox" data-price="20000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1512290900722-9a70f8a2bc18?auto=format&fit=crop&q=80&w=600" alt="Tratamiento Detox" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Tratamientos</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Tratamiento Capilar Detox</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">Exfoliación profunda del cuero cabelludo, mascarilla nutritiva y masaje relajante.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$20.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+
+            <!-- Item 6 -->
+            <div class="service-card p-6 rounded-3xl bg-[#d4af37]/[0.015] border border-[#d4af37]/20 flex flex-col justify-between group" data-category="tratamientos" data-name="Facial Express Antifatiga" data-price="16000">
+                <div>
+                    <div class="relative rounded-2xl overflow-hidden mb-6 h-52 border border-[#d4af37]/20">
+                        <img src="https://images.unsplash.com/photo-1519699047748-de8e457a634e?auto=format&fit=crop&q=80&w=600" alt="Facial Express" class="w-full h-full object-cover group-hover:scale-105 transition duration-500" loading="lazy">
+                        <span class="absolute top-3 right-3 px-3 py-1 rounded-full bg-black/80 backdrop-blur-md text-[#d4af37] text-xs font-medium border border-[#d4af37]/30">Tratamientos</span>
+                    </div>
+                    <h3 class="text-xl font-semibold text-white mb-2">Facial Express Antifatiga</h3>
+                    <p class="text-gray-400 text-sm font-light mb-4">Limpieza facial profunda, eliminación de impurezas y vapor con ozono.</p>
+                </div>
+                <div class="flex items-center justify-between pt-4 border-t border-[#d4af37]/20">
+                    <span class="text-2xl font-light text-[#d4af37]">$16.000 <span class="text-xs text-gray-400 font-normal">CLP</span></span>
+                    <button class="add-to-cart px-4 py-2.5 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37] hover:text-black text-white font-medium text-sm transition flex items-center gap-2 border border-[#d4af37]/30">
+                        <i data-lucide="plus" class="w-4 h-4"></i> Agregar
+                    </button>
+                </div>
+            </div>
+        </div>
+    </main>
+
+    <!-- Cart Drawer -->
+    <div id="cart-drawer" class="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm hidden flex justify-end">
+        <div class="w-full max-w-md bg-[#07090f] border-l border-[#d4af37]/30 h-full flex flex-col p-6 shadow-2xl transform translate-x-full transition-transform duration-300" id="cart-panel">
+            <div class="flex items-center justify-between pb-6 border-b border-[#d4af37]/20">
+                <div class="flex items-center gap-3">
+                    <i data-lucide="shopping-bag" class="w-5 h-5 text-[#d4af37]"></i>
+                    <h3 class="text-lg font-semibold text-white">Tu Cotización / Reserva</h3>
+                </div>
+                <button id="close-cart-btn" class="p-2 rounded-xl bg-[#d4af37]/10 hover:bg-[#d4af37]/20 text-gray-300">
+                    <i data-lucide="x" class="w-5 h-5"></i>
+                </button>
+            </div>
+            <div id="cart-items-container" class="flex-1 overflow-y-auto py-6 space-y-4">
+                <p class="text-gray-400 text-center py-12 text-sm font-light">Tu carrito está vacío.</p>
+            </div>
+            <div class="pt-6 border-t border-[#d4af37]/20 space-y-4">
+                <div class="flex items-center justify-between text-base font-medium">
+                    <span class="text-gray-400">Total Estimado:</span>
+                    <span id="cart-total" class="text-[#d4af37] text-xl font-semibold">$0 CLP</span>
+                </div>
+                <button id="checkout-whatsapp" class="w-full py-4 rounded-xl bg-gradient-to-r from-[#d4af37] to-[#f3e5ab] text-black font-semibold transition flex items-center justify-center gap-3 shadow-lg shadow-[#d4af37]/20">
+                    <i class="fa-brands fa-whatsapp text-xl"></i>
+                    Reservar / Enviar por WhatsApp
+                </button>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer -->
+    <footer class="bg-[#030407] border-t border-[#d4af37]/20 py-16 px-4 z-10 relative">
+        <div class="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10">
+            <div class="space-y-4">
+                <div class="flex items-center gap-3">
+                    <div class="w-8 h-8 rounded-lg bg-[#d4af37] text-black font-bold flex items-center justify-center">E</div>
+                    <span class="text-lg font-bold tracking-wider font-['Playfair_Display']">ESQUINA</span>
+                </div>
+                <p class="text-gray-400 text-sm font-light">Studio & Grooming en Gral. Gorostiaga 881, Ñuñoa[cite: 1].</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Enlaces Rápidos</h4>
+                <ul class="space-y-2 text-sm text-gray-400 font-light">
+                    <li><a href="index.html" class="hover:text-[#d4af37] transition">Inicio</a></li>
+                    <li><a href="servicios.html" class="hover:text-[#d4af37] transition">Servicios & Cotizador</a></li>
+                    <li><a href="nosotros.html" class="hover:text-[#d4af37] transition">Nosotros</a></li>
+                    <li><a href="contacto.html" class="hover:text-[#d4af37] transition">Contacto</a></li>
+                </ul>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Ubicación</h4>
+                <p class="text-sm text-gray-400 font-light">Gral. Gorostiaga 881, Ñuñoa[cite: 1]</p>
+                <p class="text-sm text-[#d4af37] font-light mt-2">+56 9 3863 7808[cite: 1]</p>
+            </div>
+            <div>
+                <h4 class="text-white font-semibold mb-4 text-sm uppercase tracking-wider">Inclusión</h4>
+                <p class="text-sm text-gray-400 font-light flex items-center gap-2"><i class="fa-solid fa-rainbow"></i> LGBTQ+ Friendly[cite: 1]</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="script.js"></script>
+</body>
+</html>
